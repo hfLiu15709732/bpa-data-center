@@ -5,6 +5,7 @@ import {
   getUserInfo,
   LoginData,
 } from '@/api/user';
+import { Message } from '@arco-design/web-vue';
 import { setToken, clearToken } from '@/utils/auth';
 import { removeRouteListener } from '@/utils/route-listener';
 import { UserState } from './types';
@@ -87,8 +88,18 @@ const useUserStore = defineStore('user', {
     // Login
     async login(loginForm: LoginData) {
       try {
-        const res = await userLogin(loginForm);
-        setToken(res.data.token);
+        // const res = await userLogin(loginForm);
+        if (loginForm.username === 'admin' && loginForm.password === 'admin') {
+          window.localStorage.setItem('userRole', 'admin');
+          setToken('12345');
+        } else {
+          Message.error({
+            content: '用户名或密码错误',
+            duration: 5 * 1000,
+          });
+          clearToken();
+          throw new Error();
+        }
       } catch (err) {
         clearToken();
         throw err;

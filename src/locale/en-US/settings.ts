@@ -1,5 +1,5 @@
 export default {
-  'settings.title': 'Settings',
+  'settings.title': 'Color Weakness mode',
   'settings.themeColor': 'Theme Color',
   'settings.content': 'Content Setting',
   'settings.search': 'Search',

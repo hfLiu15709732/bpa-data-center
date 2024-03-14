@@ -92,7 +92,7 @@
         <a-tooltip :content="$t('settings.title')">
           <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setVisible">
             <template #icon>
-              <icon-settings />
+              <icon-relation />
             </template>
           </a-button>
         </a-tooltip>
@@ -165,6 +165,7 @@ import MessageBox from '../message-box/index.vue';
 
 const appStore = useAppStore();
 const userStore = useUserStore();
+const emit = defineEmits(['inputChange']);
 const { logout } = useUser();
 const { changeLocale, currentLocale } = useLocale();
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
@@ -192,7 +193,20 @@ const handleToggleTheme = () => {
   toggleTheme();
 };
 const setVisible = () => {
-  appStore.updateSettings({ globalSettings: true });
+  // appStore.updateSettings({ globalSettings: true });
+  console.log(appStore.colorWeak);
+  if (appStore.colorWeak === true) {
+    document.body.style.filter = 'none';
+    appStore.updateSettings({
+      colorWeak: false,
+    });
+  } else {
+    document.body.style.filter = 'invert(80%)';
+    appStore.updateSettings({
+      colorWeak: true,
+    });
+  }
+
 };
 const refBtn = ref();
 const triggerBtn = ref();
