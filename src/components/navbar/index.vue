@@ -152,7 +152,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, inject } from 'vue';
+import { computed, ref, inject, onMounted } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import { useDark, useToggle, useFullscreen } from '@vueuse/core';
 import { useAppStore, useUserStore } from '@/store';
@@ -237,6 +237,19 @@ const switchRoles = async () => {
 };
 const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
 const router = useRouter()
+
+onMounted(() => {
+  const currentUrl = router.currentRoute.value.fullPath;
+  if (currentUrl === "/visualization/data-analysis") {
+    switchMode2.value = "secondary";
+    switchMode1.value = "primary";
+  } else if (currentUrl === "/visualization/multi-dimension-data-analysis") {
+    switchMode1.value = "secondary";
+    switchMode2.value = "primary";
+  }
+
+
+})
 const changeMode = (value: number) => {
   if (value === 2) {
     switchMode1.value = "secondary";
