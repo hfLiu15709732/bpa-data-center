@@ -89,6 +89,15 @@
         </a-tooltip>
       </li>
       <li>
+        <a-tooltip :content="$t('messageBox.logout')">
+          <a-button class="nav-btn" type="outline" :shape="'circle'" @click="handleLogout()">
+            <template #icon>
+              <icon-rotate-left />
+            </template>
+          </a-button>
+        </a-tooltip>
+      </li>
+      <li>
         <a-tooltip :content="$t('settings.title')">
           <a-button class="nav-btn" type="outline" :shape="'circle'" @click="setVisible">
             <template #icon>
@@ -268,6 +277,7 @@ const changeMode = (value: number) => {
     });
   }
 }
+
 </script>
 
 <style scoped lang="less">
