@@ -71,3 +71,7 @@ export interface DataOverviewRes {
 export function queryDataOverview() {
   return axios.post<DataOverviewRes>('/api/data-overview');
 }
+
+export function getMockData() {
+  return axios.get<any>('/default/getArticleList');
+}

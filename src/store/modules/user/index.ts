@@ -55,7 +55,31 @@ const useUserStore = defineStore('user', {
 
     // Get user's information
     async info() {
-      const res = await getUserInfo();
+      // const res = await getUserInfo();
+      const res = {
+        data: {
+          name: '王立群',
+          avatar:
+            '//lf1-xgcdn-tos.pstatp.com/obj/vcloud/vadmin/start.8e0e4855ee346a46ccff8ff3e24db27b.png',
+          email: 'wangliqun@email.com',
+          job: 'frontend',
+          jobName: '前端艺术家',
+          organization: 'Frontend',
+          organizationName: '前端',
+          location: 'beijing',
+          locationName: '北京',
+          introduction: '人潇洒，性温存',
+          personalWebsite: 'https://www.arco.design',
+          phone: '150****0000',
+          registrationDate: '2013-05-10 12:10:00',
+          accountId: '15012312300',
+          certification: 1,
+          role: 'admin',
+        },
+        status: 'ok',
+        msg: '请求成功',
+        code: 20000,
+      };
 
       this.setInfo(res.data);
     },
@@ -80,7 +104,8 @@ const useUserStore = defineStore('user', {
     // Logout
     async logout() {
       try {
-        await userLogout();
+        // await userLogout();
+        console.log('用户登出');
       } finally {
         this.logoutCallBack();
       }
