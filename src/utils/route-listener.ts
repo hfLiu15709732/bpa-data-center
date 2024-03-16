@@ -13,6 +13,8 @@ let latestRoute: RouteLocationNormalized;
 
 export function setRouteEmitter(to: RouteLocationNormalized) {
   emitter.emit(key, to);
+  console.log(key, to);
+
   latestRoute = to;
 }
 

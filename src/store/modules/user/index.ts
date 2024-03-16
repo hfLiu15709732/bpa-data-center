@@ -115,8 +115,8 @@ const useUserStore = defineStore('user', {
     // Logout
     async logout() {
       try {
-        // await userLogout();
         console.log('用户登出');
+        console.log(888);
       } finally {
         this.logoutCallBack();
       }

@@ -69,7 +69,7 @@ axios.interceptors.response.use(
   },
   (error) => {
     Message.error({
-      content: error.msg || 'Request Error',
+      content: error.msg || '网络请求失败，请稍后再试',
       duration: 5 * 1000,
     });
     return Promise.reject(error);

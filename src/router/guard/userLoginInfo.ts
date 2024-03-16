@@ -1,5 +1,6 @@
 import type { Router, LocationQueryRaw } from 'vue-router';
-import NProgress from 'nprogress'; // progress bar
+import NProgress from 'nprogress';
+import { Message } from '@arco-design/web-vue'; // progress bar
 
 import { useUserStore } from '@/store';
 import { isLogin } from '@/utils/auth';
@@ -31,6 +32,11 @@ export default function setupUserLoginInfoGuard(router: Router) {
         next();
         return;
       }
+      Message.warning({
+        content: '检测到数据泄露风险，请重新登录!',
+        duration: 5 * 1000,
+      });
+
       next({
         name: 'login',
         query: {

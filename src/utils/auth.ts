@@ -1,10 +1,13 @@
-const TOKEN_KEY = 'token';
+const TOKEN_KEY = 'xinmiaotoken';
 
 const isLogin = () => {
-  return !!localStorage.getItem(TOKEN_KEY);
+  console.log('ahhahah');
+
+  return localStorage.getItem(TOKEN_KEY);
 };
 
 const getToken = () => {
+  console.log('拿token');
   return localStorage.getItem(TOKEN_KEY);
 };
 
@@ -13,6 +16,7 @@ const setToken = (token: string) => {
 };
 
 const clearToken = () => {
+  console.log('清除');
   localStorage.removeItem(TOKEN_KEY);
 };
 
